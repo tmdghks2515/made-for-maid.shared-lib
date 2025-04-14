@@ -1,4 +1,4 @@
-package io.made_for_maid.shared_lib;
+package io.madeformaid.shared;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

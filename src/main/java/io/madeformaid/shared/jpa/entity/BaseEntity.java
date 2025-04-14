@@ -1,4 +1,4 @@
-package io.made_for_maid.shared_lib.jpa.entity;
+package io.madeformaid.shared.jpa.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

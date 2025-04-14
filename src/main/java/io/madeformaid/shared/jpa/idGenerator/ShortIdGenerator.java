@@ -1,4 +1,4 @@
-package io.made_for_maid.shared_lib.jpa.idGenerator;
+package io.madeformaid.shared.jpa.idGenerator;
 
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.generator.BeforeExecutionGenerator;
