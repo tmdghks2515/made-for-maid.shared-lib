@@ -25,11 +25,14 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly  'org.springframework.boot:spring-boot-starter-data-jpa:3.4.4'
+	implementation 'org.springframework.security:spring-security-core'
 	implementation 'org.springframework.boot:spring-boot-configuration-processor:3.4.4'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:3.4.4'
 	compileOnly 'org.projectlombok:lombok:1.18.30'
 	annotationProcessor 'org.projectlombok:lombok:1.18.30'
+	implementation 'com.auth0:java-jwt:4.4.0'
 }
 
 publishing {
