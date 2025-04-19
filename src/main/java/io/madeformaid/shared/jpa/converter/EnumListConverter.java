@@ -4,20 +4,21 @@ import io.madeformaid.shared.vo.enums.DescribableEnum;
 import jakarta.persistence.AttributeConverter;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public abstract class EnumSetConverter<T extends Enum<T> & DescribableEnum> implements AttributeConverter<Set<T>, String> {
+public abstract class EnumListConverter<T extends Enum<T> & DescribableEnum> implements AttributeConverter<List<T>, String> {
 
     private final Class<T> enumClass;
     private static final String DELIMITER = ",";
 
-    protected EnumSetConverter(Class<T> enumClass) {
+    protected EnumListConverter(Class<T> enumClass) {
         this.enumClass = enumClass;
     }
 
     @Override
-    public String convertToDatabaseColumn(Set<T> attribute) {
+    public String convertToDatabaseColumn(List<T> attribute) {
         if (attribute == null || attribute.isEmpty()) return "";
         return attribute.stream()
                 .map(Enum::name)
@@ -25,11 +26,11 @@ public abstract class EnumSetConverter<T extends Enum<T> & DescribableEnum> impl
     }
 
     @Override
-    public Set<T> convertToEntityAttribute(String dbData) {
-        if (dbData == null || dbData.trim().isEmpty()) return Set.of();
+    public List<T> convertToEntityAttribute(String dbData) {
+        if (dbData == null || dbData.trim().isEmpty()) return List.of();
         return Arrays.stream(dbData.split(DELIMITER))
                 .map(String::trim)
                 .map(value -> Enum.valueOf(enumClass, value))
-                .collect(Collectors.toSet());
+                .collect(Collectors.toList());
     }
 }
