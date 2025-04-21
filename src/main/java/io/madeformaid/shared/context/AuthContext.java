@@ -1,5 +1,7 @@
 package io.madeformaid.shared.context;
 
+import lombok.Getter;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -7,8 +9,14 @@ public class AuthContext {
 
     private static final ThreadLocal<AuthInfo> authHolder = new ThreadLocal<>();
 
-    public static void set(String userId, List<String> roles) {
-        authHolder.set(new AuthInfo(userId, roles));
+    public static void set(String accountId, String userId, List<String> roles) {
+        authHolder.set(new AuthInfo(accountId, userId, roles));
+    }
+
+    public static String getAccountId() {
+        return Optional.ofNullable(authHolder.get())
+                .map(AuthInfo::getAccountId)
+                .orElse(null);
     }
 
     public static String getUserId() {
@@ -31,21 +39,16 @@ public class AuthContext {
         authHolder.remove();
     }
 
+    @Getter
     public static class AuthInfo {
+        private final String accountId;
         private final String userId;
         private final List<String> roles;
 
-        public AuthInfo(String userId, List<String> roles) {
+        public AuthInfo(String accountId, String userId, List<String> roles) {
+            this.accountId = accountId;
             this.userId = userId;
             this.roles = roles != null ? roles : List.of();
-        }
-
-        public String getUserId() {
-            return userId;
-        }
-
-        public List<String> getRoles() {
-            return roles;
         }
     }
 }
