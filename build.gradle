@@ -25,6 +25,7 @@ repositories {
 }
 
 dependencies {
+	implementation("org.springframework.boot:spring-boot-starter")
 	implementation 'org.springframework.boot:spring-boot-configuration-processor:3.4.4'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:3.4.4'
 	compileOnly 'org.projectlombok:lombok:1.18.30'

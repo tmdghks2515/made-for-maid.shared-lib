@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
 @Getter
 @Setter
+@Component
 @ConfigurationProperties(prefix = "auth")
 public class AuthProperties {
 
