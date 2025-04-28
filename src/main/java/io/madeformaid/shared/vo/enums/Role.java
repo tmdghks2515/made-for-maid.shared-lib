@@ -1,12 +1,12 @@
 package io.madeformaid.shared.vo.enums;
 
 public enum Role implements DescribableEnum {
-    USER("사용자"),
+    SUPER_ADMIN("슈퍼 관리자"),
+    SYSTEM_ADMIN("시스템 관리자"),
     SHOP_OWNER("사장님"),
     SHOP_MANAGER("매니저"),
     SHOP_STAFF("메이드/집사"),
-    SYSTEM_ADMIN("시스템 관리자"),
-    SUPER_ADMIN("슈퍼 관리자"),
+    USER("사용자"),
     ;
 
     private final String displayName;
