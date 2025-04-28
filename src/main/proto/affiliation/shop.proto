@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package affiliation;
+
+service ShopService {
+  rpc GetShopNames (GetShopNamesRequest) returns (GetShopNamesResponse);
+}
+
+message GetShopNamesRequest {
+  repeated string shopIds = 1;
+}
+
+message GetShopNamesResponse {
+  repeated ShopNameInfo shopNames = 1;
+}
+
+message ShopNameInfo {
+  string shopId = 1;
+  string shopName = 2;
+}
